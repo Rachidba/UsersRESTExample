@@ -1,5 +1,7 @@
 package com.app.users.Models;
 
+import java.util.Objects;
+
 public class UserForCreationDTO {
     private String firstName;
     private String lastName;
@@ -26,5 +28,19 @@ public class UserForCreationDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserForCreationDTO)) return false;
+        UserForCreationDTO that = (UserForCreationDTO) o;
+        return Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName);
     }
 }
