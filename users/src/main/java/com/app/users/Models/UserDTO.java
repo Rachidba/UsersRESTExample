@@ -4,16 +4,26 @@ import java.util.Objects;
 
 public class UserDTO {
     private Long userId;
+    private String email;
     private String firstName;
     private String lastName;
 
     public UserDTO() {
     }
 
-    public UserDTO(Long userId, String firstName, String lastName) {
+    public UserDTO(Long userId, String email, String firstName, String lastName) {
         this.userId = userId;
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -40,18 +50,20 @@ public class UserDTO {
         this.userId = userId;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof UserDTO)) return false;
         UserDTO userDTO = (UserDTO) o;
         return Objects.equals(userId, userDTO.userId) &&
+                Objects.equals(email, userDTO.email) &&
                 Objects.equals(firstName, userDTO.firstName) &&
                 Objects.equals(lastName, userDTO.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, firstName, lastName);
+        return Objects.hash(userId, email, firstName, lastName);
     }
 }

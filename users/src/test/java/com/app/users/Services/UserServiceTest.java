@@ -53,7 +53,7 @@ public class UserServiceTest {
     @Test
     public void getUser_ShouldReturnExactUser_WhenFound() {
         User user = new User(new Long(1), "Oumaima", "DAHHOUM");
-        UserDTO expectedUser = new UserDTO(new Long(1), "Oumaima", "DAHHOUM");
+        UserDTO expectedUser = new UserDTO(new Long(1), "oumaima.dahhoum@gmail.com", "Oumaima", "DAHHOUM");
 
         when(userRepository.findById(new Long(1))).thenReturn(Optional.of(user));
         when(userMapper.userToUserDTO(user)).thenReturn(expectedUser);
@@ -71,8 +71,8 @@ public class UserServiceTest {
         users.add(new User(new Long(2), "Oumaima", "DAHHOUM"));
 
         List<UserDTO> expectedUsers = new ArrayList<>();
-        expectedUsers.add(new UserDTO(new Long(1), "Rachid", "BAAZIZ"));
-        expectedUsers.add(new UserDTO(new Long(2), "Oumaima", "DAHHOUM"));
+        expectedUsers.add(new UserDTO(new Long(1), "rachid.baaziz@gmail.com", "Rachid", "BAAZIZ"));
+        expectedUsers.add(new UserDTO(new Long(2), "oumaima.dahhoum@gmail.com", "Oumaima", "DAHHOUM"));
 
         when(userRepository.findAll()).thenReturn(users);
         when(userMapper.usersToUsersDTO(users)).thenReturn(expectedUsers);

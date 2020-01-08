@@ -1,6 +1,6 @@
 package com.app.users.Controllers;
+import com.app.users.Models.RegistrationDTO;
 import com.app.users.Models.UserDTO;
-import com.app.users.Models.UserForCreationDTO;
 import com.app.users.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     @Autowired
@@ -32,8 +32,8 @@ public class UserController {
         return user;
     }
 
-    @PostMapping
-    public UserDTO CreateUser(@RequestBody UserForCreationDTO userDTO) {
+    @PostMapping("/register")
+    public UserDTO CreateUser(@RequestBody RegistrationDTO userDTO) {
         if (userDTO == null)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
         UserDTO createdUser = userService.create(userDTO);
